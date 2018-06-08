@@ -6,13 +6,22 @@ class BinarySearchTree {
   }
 
   depthFirstForEach(cb) {
-    /* Your code here */
-    
+    cb(this.value);
+    if (this.left) this.left.depthFirstForEach(cb);
+    if (this.right) this.right.depthFirstForEach(cb);    
   }
 
   breadthFirstForEach(cb) {
-    /* Your code here */
-
+    let current = [this];
+    while (current.length > 0) {
+      let next = [];
+      for (let node of current) {
+        cb(node.value);
+        if (node.left) next.push(node.left);
+        if (node.right) next.push(node.right);
+      }
+      current = next;
+    }
   }
 
   insert(value) {
