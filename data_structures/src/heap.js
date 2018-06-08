@@ -1,6 +1,11 @@
 const heapsort = (arr) => {
-  /* Your code here */
-  
+  const heap = new Heap();
+  const temp = [];
+  const sorted = [];
+  for (let i = 0; i < arr.length; i++) heap.insert(arr[i]);
+  for (let i = 0; i < arr.length; i++) temp.push(heap.delete(arr[i]));
+  for (let i = 0; i < arr.length; i++) sorted.push(temp.pop());
+  return sorted;
 };
 
 
